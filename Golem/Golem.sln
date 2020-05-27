@@ -8,6 +8,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GolemWindows", "GolemWindows\GolemWindows.vcxproj", "{11F2D271-F743-4BC8-806D-FEE51FE0829E}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Golem\Golem.vcxitems*{11f2d271-f743-4bc8-806d-fee51fe0829e}*SharedItemsImports = 4
+		Golem\Golem.vcxitems*{fb667968-0135-4490-8a5e-62e5319c9fb3}*SharedItemsImports = 9
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86

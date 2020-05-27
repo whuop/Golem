@@ -1,11 +1,22 @@
 // GolemWindows.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
+#include "SDL.h"
+#undef main
 #include <iostream>
+#include "Window.h"
+
+using namespace Golem::Core;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	Window* window = new Window(100, 100, 640, 480);
+
+	window->Run();
+
+	delete window;
+	window = nullptr;
+
+	return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
