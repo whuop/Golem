@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+Golem/Debug
+Golem/GolemWindows/Debug
+Golem/.vs/Golem/v16
