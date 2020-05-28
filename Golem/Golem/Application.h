@@ -11,7 +11,7 @@ namespace Golem
 	class Application
 	{
 	public:
-		Application(int windowWidth, int windowHeight);
+		Application(int windowPosX, int windowPosY, int windowWidth, int windowHeight);
 		~Application();
 
 		void Run();

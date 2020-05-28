@@ -8,12 +8,12 @@
 using namespace Golem;
 using namespace Golem::Core;
 
-Application::Application(int windowWidth, int windowHeight):
+Application::Application(int windowPosX, int windowPosY, int windowWidth, int windowHeight):
 	m_window(nullptr),
 	m_renderer(nullptr),
 	m_isRunning(false)
 {
-	m_window = new Window(0, 0, windowWidth, windowHeight);
+	m_window = new Window(windowPosX, windowPosY, windowWidth, windowHeight);
 	m_renderer = new Renderer(m_window);
 }
 

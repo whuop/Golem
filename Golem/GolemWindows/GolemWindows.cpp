@@ -13,7 +13,7 @@ using namespace Golem;
 
 int main()
 {
-	Application* app = new Application(640, 480);
+	Application* app = new Application(200, 200, 640, 480);
 	app->Run();
 	delete app;
 	return 0;

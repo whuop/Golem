@@ -76,6 +76,7 @@ void Renderer::Draw(Window* window)
 
 	//	Use debug font to print infomration about this example
 	bgfx::dbgTextClear();
+
 	/*bgfx::dbgTextImage(bx::uint32_max(width / 2 / 8, 20) - 20
 		, bx::uint32_max(height / 2 / 16, 6) - 6
 		, 40
