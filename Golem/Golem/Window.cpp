@@ -5,8 +5,8 @@
 using namespace Golem::Core;
 
 Window::Window(int posX, int posY, int width, int height):
-	m_sdlWindow(nullptr),
-	m_isRunning(false)
+	m_sdlWindow(nullptr)/*,
+	m_isRunning(false)*/
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
@@ -30,7 +30,7 @@ Window::~Window()
 	SDL_Quit();
 }
 
-void Window::Run()
+/*void Window::Run()
 {
 	m_isRunning = true;
 	SDL_Event e;
@@ -44,14 +44,14 @@ void Window::Run()
 			}
 		}
 	}
-}
+}*/
 
 SDL_Window* Window::GetSDLWindow() const
 {
 	return m_sdlWindow;
 }
 
-const bool Window::GetIsRunning() const
+/*const bool Window::GetIsRunning() const
 {
 	return m_isRunning;
 }
@@ -59,4 +59,4 @@ const bool Window::GetIsRunning() const
 void Window::SetIsRunning(const bool value)
 {
 	m_isRunning = value;
-}
+}*/

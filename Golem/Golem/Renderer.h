@@ -1,4 +1,6 @@
 #pragma once
+#include <bx/bx.h>
+#include <bx/thread.h>
 
 namespace Golem
 {
@@ -10,6 +12,8 @@ namespace Golem
 		public:
 			Renderer(Window* window);
 			~Renderer();
+
+			void Draw(Window* window);
 		private:
 
 		};

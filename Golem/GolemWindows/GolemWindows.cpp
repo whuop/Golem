@@ -7,21 +7,14 @@
 #include <bgfx/platform.h>
 #include <bx/bx.h>
 
-#include "Window.h"
-#include "Renderer.h"
+#include "Application.h"
 
-using namespace Golem::Core;
+using namespace Golem;
 
 int main()
 {
-	Window* window = new Window(100, 100, 640, 480);
-	Renderer* renderer = new Renderer(window);
-
-	window->Run();
-
-	delete renderer;
-	renderer = nullptr;
-	delete window;
-	window = nullptr;
+	Application* app = new Application(640, 480);
+	app->Run();
+	delete app;
 	return 0;
 }
