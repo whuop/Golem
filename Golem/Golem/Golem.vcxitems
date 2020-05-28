@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Application.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)bgfx_logo.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Renderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Window.h" />
   </ItemGroup>

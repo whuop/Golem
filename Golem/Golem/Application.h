@@ -15,6 +15,10 @@ namespace Golem
 		~Application();
 
 		void Run();
+		void Close();
+
+		const bool GetIsRunning() const;
+
 	private:
 
 		bool m_isRunning;

@@ -46,3 +46,13 @@ void Application::Run()
 		m_renderer->Draw(m_window);
 	}
 }
+
+void Application::Close()
+{
+	m_isRunning = false;
+}
+
+const bool Application::GetIsRunning() const
+{
+	return m_isRunning;
+}

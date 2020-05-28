@@ -22,5 +22,6 @@
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Application.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)bgfx_logo.h" />
   </ItemGroup>
 </Project>
