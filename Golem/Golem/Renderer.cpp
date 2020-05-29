@@ -9,6 +9,7 @@
 #include <bx/thread.h>
 
 #include "bgfx_logo.h"
+#include <dear-imgui/imgui.h>
 
 using namespace Golem::Core;
 
@@ -54,16 +55,14 @@ Renderer::Renderer(Window* window)
 	//	Set view 0 clear state
 	bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x303030ff, 1.0f, 0);
 
-
-	//bgfx::frame();
-
 }
 
 Renderer::~Renderer()
 {
+	bgfx::shutdown();
 }
 
-void Renderer::Draw(Window* window)
+void Renderer::Clear(Window* window)
 {
 	int width, height;
 	SDL_GetWindowSize(window->GetSDLWindow(), &width, &height);
@@ -78,7 +77,12 @@ void Renderer::Draw(Window* window)
 
 	//	Use debug font to print infomration about this example
 	bgfx::dbgTextClear();
+}
 
+void Renderer::Draw(Window* window)
+{
+	int width, height;
+	SDL_GetWindowSize(window->GetSDLWindow(), &width, &height);
 	bgfx::dbgTextImage(
 		bx::max<uint16_t>(uint16_t(width / 2 / 8), 20) - 20
 		, bx::max<uint16_t>(uint16_t(height / 2 / 16), 6) - 6
@@ -100,14 +104,6 @@ void Renderer::Draw(Window* window)
 		, stats->textWidth
 		, stats->textHeight
 	);
-
-	/*bgfx::dbgTextImage(bx::uint32_max(width / 2 / 8, 20) - 20
-		, bx::uint32_max(height / 2 / 16, 6) - 6
-		, 40
-		, 12
-		, s_logo
-		, 160
-	);*/
 
 	bgfx::frame();
 }

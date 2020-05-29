@@ -13,6 +13,7 @@ namespace Golem
 			Renderer(Window* window);
 			~Renderer();
 
+			void Clear(Window* window);
 			void Draw(Window* window);
 		private:
 

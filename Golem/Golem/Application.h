@@ -19,6 +19,9 @@ namespace Golem
 
 		const bool GetIsRunning() const;
 
+		const Core::Renderer& GetRenderer() const;
+		const Core::Window& GetWindow() const;
+
 	private:
 
 		bool m_isRunning;

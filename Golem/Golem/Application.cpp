@@ -43,6 +43,10 @@ void Application::Run()
 			}
 		}
 
+		m_renderer->Clear(m_window);
+
+
+
 		m_renderer->Draw(m_window);
 	}
 }
@@ -55,4 +59,14 @@ void Application::Close()
 const bool Application::GetIsRunning() const
 {
 	return m_isRunning;
+}
+
+const Core::Renderer& Golem::Application::GetRenderer() const
+{
+	return *this->m_renderer;
+}
+
+const Core::Window& Golem::Application::GetWindow() const
+{
+	return *this->m_window;
 }
