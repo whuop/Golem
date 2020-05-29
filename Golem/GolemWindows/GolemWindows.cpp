@@ -9,11 +9,85 @@
 
 #include "Application.h"
 
+#include "Mesh.h"
+
 using namespace Golem;
+using namespace Golem::Graphics;
+using namespace Golem::Math;
 
 int main()
 {
 	Application* app = new Application(200, 200, 640, 480);
+	
+	Mesh* mesh = new Mesh();
+	mesh->AddVertex(Vector3f(-1.0f, 1.0f, 1.0f));
+	mesh->AddVertex(Vector3f(1.0f, 1.0f, 1.0f));
+	mesh->AddVertex(Vector3f(-1.0f, -1.0f, 1.0f));
+	mesh->AddVertex(Vector3f(1.0f, -1.0f, 1.0f));
+	mesh->AddVertex(Vector3f(-1.0f, 1.0f, -1.0f));
+	mesh->AddVertex(Vector3f(1.0f, 1.0f, -1.0f));
+	mesh->AddVertex(Vector3f(-1.0f, -1.0f, -1.0f));
+	mesh->AddVertex(Vector3f(1.0f, -1.0f, -1.0f));
+
+	mesh->AddColor(Color(1, 0, 0, 1));
+	mesh->AddColor(Color(1, 0, 0, 1));
+	mesh->AddColor(Color(1, 0, 0, 1));
+	mesh->AddColor(Color(1, 0, 0, 1));
+	mesh->AddColor(Color(1, 0, 0, 1));
+	mesh->AddColor(Color(1, 0, 0, 1));
+	mesh->AddColor(Color(1, 0, 0, 1));
+	mesh->AddColor(Color(1, 0, 0, 1));
+
+	mesh->AddIndex(0);
+	mesh->AddIndex(1);
+	mesh->AddIndex(2);
+
+	mesh->AddIndex(1);
+	mesh->AddIndex(3);
+	mesh->AddIndex(2);
+
+	mesh->AddIndex(4);
+	mesh->AddIndex(6);
+	mesh->AddIndex(5);
+
+	mesh->AddIndex(5);
+	mesh->AddIndex(6);
+	mesh->AddIndex(7);
+
+	mesh->AddIndex(0);
+	mesh->AddIndex(2);
+	mesh->AddIndex(4);
+
+	mesh->AddIndex(4);
+	mesh->AddIndex(2);
+	mesh->AddIndex(6);
+
+	mesh->AddIndex(1);
+	mesh->AddIndex(5);
+	mesh->AddIndex(3);
+
+	mesh->AddIndex(5);
+	mesh->AddIndex(7);
+	mesh->AddIndex(3);
+
+	mesh->AddIndex(0);
+	mesh->AddIndex(4);
+	mesh->AddIndex(1);
+
+	mesh->AddIndex(4);
+	mesh->AddIndex(5);
+	mesh->AddIndex(1);
+
+	mesh->AddIndex(2);
+	mesh->AddIndex(3);
+	mesh->AddIndex(6);
+
+	mesh->AddIndex(6);
+	mesh->AddIndex(3);
+	mesh->AddIndex(7);
+
+	mesh->ConstructMesh();
+	
 	app->Run();
 	delete app;
 	return 0;

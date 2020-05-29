@@ -17,6 +17,7 @@ namespace Golem::Graphics
 
 		void AddVertex(const Golem::Math::Vector3f& vertex);
 		void AddColor(const Golem::Graphics::Color& color);
+		void AddIndex(const int index);
 
 	private:
 		bgfx::VertexBufferHandle m_vbo;
@@ -26,6 +27,7 @@ namespace Golem::Graphics
 
 		std::vector<Golem::Math::Vector3f> m_vertices;
 		std::vector<Golem::Graphics::Color> m_colors;
+		std::vector<int> m_indices;
 	};
 }
 
