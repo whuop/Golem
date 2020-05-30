@@ -10,6 +10,7 @@
 #include "Application.h"
 
 #include "Mesh.h"
+#include "Material.h"
 
 using namespace Golem;
 using namespace Golem::Graphics;
@@ -87,6 +88,9 @@ int main()
 	mesh->AddIndex(7);
 
 	mesh->ConstructMesh();
+
+	Material* material = new Material("v_simple.bin", "f_simple.bin");
+	mesh->SetMaterial(material);
 	
 	app->Run();
 	delete app;

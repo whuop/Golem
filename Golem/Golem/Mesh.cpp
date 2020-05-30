@@ -50,3 +50,15 @@ void Mesh::AddIndex(const int index)
 {
 	m_indices.push_back(index);
 }
+
+void Mesh::ClearMeshData()
+{
+	m_vertices.clear();
+	m_colors.clear();
+	m_indices.clear();
+}
+
+void Mesh::SetMaterial(const Material* material)
+{
+	m_material = material;
+}
