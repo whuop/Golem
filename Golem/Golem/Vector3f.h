@@ -5,6 +5,10 @@ namespace Golem::Math
 	struct Vector3f
 	{
 	public:
+		float X;
+		float Y;
+		float Z;
+
 		Vector3f():
 			X(0),
 			Y(0),
@@ -17,9 +21,7 @@ namespace Golem::Math
 			Z(z)
 		{}
 
-		float X;
-		float Y;
-		float Z;
+		
 	};
 }
 

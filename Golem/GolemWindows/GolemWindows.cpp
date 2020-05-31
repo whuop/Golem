@@ -2,22 +2,8 @@
 //
 #include "SDL.h"
 #undef main
-#include <iostream>
-#include <bgfx/bgfx.h>
-#include <bgfx/platform.h>
-#include <bx/bx.h>
-
-#include "Application.h"
-
-#include "Mesh.h"
-#include "Material.h"
 
 #include "Game.h"
-
-using namespace Golem;
-using namespace Golem::Graphics;
-using namespace Golem::Math;
-
 
 int main()
 {

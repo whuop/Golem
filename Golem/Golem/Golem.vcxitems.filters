@@ -25,6 +25,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Material.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)VertexLayouts.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Window.h">
@@ -52,6 +55,9 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Timer.h">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)VertexLayouts.h">
+      <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -18,6 +18,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Material.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Mesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Renderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)VertexLayouts.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -30,6 +31,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Timer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Vector3f.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Vector4f.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)VertexLayouts.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Window.h" />
   </ItemGroup>
 </Project>

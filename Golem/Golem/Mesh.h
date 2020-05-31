@@ -30,10 +30,10 @@ namespace Golem::Graphics
 		void SetMaterial(const Material* material);
  
 	private:
-		bgfx::VertexBufferHandle m_vbo;
-		bgfx::IndexBufferHandle m_ibo;
-		bgfx::ProgramHandle m_program;
-		bgfx::VertexLayout m_vertexLayout;
+		
+		bgfx::VertexBufferHandle m_positionBufferHandle;
+		bgfx::VertexBufferHandle m_colorBufferHandle;
+		bgfx::IndexBufferHandle m_indexBufferHandle;
 
 		const Material* m_material;
 

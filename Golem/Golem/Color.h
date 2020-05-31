@@ -5,6 +5,11 @@ namespace Golem::Graphics
 	struct Color
 	{
 	public:
+		float R;
+		float G;
+		float B;
+		float A;
+
 		Color() :
 			R(1.0f),
 			G(1.0f),
@@ -21,10 +26,7 @@ namespace Golem::Graphics
 		{
 		}
 
-		float R;
-		float G;
-		float B;
-		float A;
+		
 	};
 }
 

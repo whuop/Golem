@@ -5,6 +5,11 @@ namespace Golem::Math
 	struct Vector4f
 	{
 	public:
+		float X;
+		float Y;
+		float Z;
+		float W;
+
 		Vector4f():
 			X(0),
 			Y(0),
@@ -20,10 +25,7 @@ namespace Golem::Math
 			W(w)
 		{}
 
-		float X;
-		float Y;
-		float Z;
-		float W;
+		
 	};
 }
 

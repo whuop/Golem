@@ -4,6 +4,7 @@
 #include "Mesh.h"
 #include "Material.h"
 #include "Vector3f.h"
+#include "VertexLayouts.h"
 
 #include <bx/math.h>
 #include <bx/bx.h>
@@ -19,6 +20,9 @@ Game::Game(int windowPosX, int windowPosY, int windowWidth, int windowHeight):
 
 void Game::OnInitialize()
 {
+	PositionVertex::Init();
+	ColorVertex::Init();
+
 	m_mesh = new Mesh();
 	std::vector<Vector3f> vertices = {
 		{-1.0f,  1.0f,  1.0f},

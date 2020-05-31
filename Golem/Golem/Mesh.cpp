@@ -1,20 +1,24 @@
 #include "Mesh.h"
 
+#include "VertexLayouts.h"
+
 using namespace Golem;
 using namespace Golem::Graphics;
 
-Mesh::Mesh()
+Mesh::Mesh():
+	m_positionBufferHandle(),
+	m_colorBufferHandle(),
+	m_indexBufferHandle(),
+	m_material(nullptr)
 {
-	m_vertexLayout.begin()
-		.add(bgfx::Attrib::Position, 3, bgfx::AttribType::Float)
-		.add(bgfx::Attrib::Color0, 4, bgfx::AttribType::Float, true)
-		.end();
+
 }
 
 Mesh::~Mesh()
 {
-	bgfx::destroy(m_vbo);
-	bgfx::destroy(m_ibo);
+	bgfx::destroy(m_positionBufferHandle);
+	bgfx::destroy(m_colorBufferHandle);
+	bgfx::destroy(m_indexBufferHandle);
 }
 
 void Mesh::Render(uint64_t state, float mtx[16])
@@ -23,35 +27,23 @@ void Mesh::Render(uint64_t state, float mtx[16])
 	bgfx::setTransform(mtx);
 
 	//	Set vertex and index buffer
-	bgfx::setVertexBuffer(0, m_vbo);
-	bgfx::setIndexBuffer(m_ibo);
+	bgfx::setVertexBuffer(0, m_positionBufferHandle);
+	bgfx::setVertexBuffer(1, m_colorBufferHandle);
+	bgfx::setIndexBuffer(m_indexBufferHandle);
 
 	//	Set render states
 	bgfx::setState(state);
-
 }
 
 void Mesh::ConstructMesh()
 {
-	printf("Constructing mesh");
-	std::vector<float> vertices;
-	for (size_t i = 0; i < m_vertices.size(); i++)
-	{
-		vertices.push_back(m_vertices[i].X);
-		vertices.push_back(m_vertices[i].Y);
-		vertices.push_back(m_vertices[i].Z);
+	const bgfx::Memory* positionBufferMem = bgfx::copy(m_vertices.data(), m_vertices.size() * PositionVertex::Layout.getStride());
+	const bgfx::Memory* colorBufferMem = bgfx::copy(m_colors.data(), m_colors.size() * ColorVertex::Layout.getStride());
+	const bgfx::Memory* indexBufferMem = bgfx::copy(m_indices.data(), m_indices.size() * sizeof(uint16_t));
 
-		vertices.push_back(m_colors[i].R);
-		vertices.push_back(m_colors[i].G);
-		vertices.push_back(m_colors[i].B);
-		vertices.push_back(m_colors[i].A);
-	}
-	
-	const bgfx::Memory* vboMem = bgfx::copy(vertices.data(), vertices.size() * sizeof(float));
-	const bgfx::Memory* iboMem = bgfx::copy(m_indices.data(), m_indices.size() * sizeof(int));
-
-	m_vbo = bgfx::createVertexBuffer(vboMem, m_vertexLayout);
-	m_ibo = bgfx::createIndexBuffer(iboMem);
+	m_positionBufferHandle = bgfx::createVertexBuffer(positionBufferMem, PositionVertex::Layout);
+	m_colorBufferHandle = bgfx::createVertexBuffer(colorBufferMem, ColorVertex::Layout);
+	m_indexBufferHandle = bgfx::createIndexBuffer(indexBufferMem);
 }
 
 void Mesh::AddVertex(const Golem::Math::Vector3f& vertex)
