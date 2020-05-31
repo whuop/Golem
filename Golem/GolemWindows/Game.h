@@ -2,6 +2,13 @@
 
 #include "Application.h"
 
+namespace Golem::Graphics
+{
+	class Mesh;
+	class Material;
+}
+
+
 class Game : public Golem::Application
 {
 public:
@@ -12,5 +19,8 @@ public:
 	void OnRender() override;
 
 private:
+
+	Golem::Graphics::Mesh* m_mesh;
+	Golem::Graphics::Material* m_material;
 };
 
