@@ -22,6 +22,10 @@ namespace Golem
 		const Core::Renderer& GetRenderer() const;
 		const Core::Window& GetWindow() const;
 
+		virtual void OnInitialize() = 0;
+		virtual void OnUpdate() = 0;
+		virtual void OnRender() = 0;
+
 	private:
 
 		bool m_isRunning;

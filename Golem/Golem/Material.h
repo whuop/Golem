@@ -1,6 +1,11 @@
 #pragma once
 #include <bgfx/bgfx.h>
 
+namespace bx
+{
+	class FileReaderI;
+}
+
 namespace Golem::Graphics
 {
 	class Material

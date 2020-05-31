@@ -32,6 +32,8 @@ void Application::Run()
 {
 	m_isRunning = true;
 
+	this->OnInitialize();
+
 	SDL_Event e;
 	while (m_isRunning)
 	{
@@ -43,9 +45,11 @@ void Application::Run()
 			}
 		}
 
+		this->OnUpdate();
+
 		m_renderer->Clear(m_window);
 
-
+		this->OnRender();
 
 		m_renderer->Draw(m_window);
 	}

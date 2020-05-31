@@ -12,15 +12,18 @@
 #include "Mesh.h"
 #include "Material.h"
 
+#include "Game.h"
+
 using namespace Golem;
 using namespace Golem::Graphics;
 using namespace Golem::Math;
 
+
 int main()
 {
-	Application* app = new Application(200, 200, 640, 480);
+	Game* app = new Game(200, 200, 640, 480);
 	
-	Mesh* mesh = new Mesh();
+	/*Mesh* mesh = new Mesh();
 	mesh->AddVertex(Vector3f(-1.0f, 1.0f, 1.0f));
 	mesh->AddVertex(Vector3f(1.0f, 1.0f, 1.0f));
 	mesh->AddVertex(Vector3f(-1.0f, -1.0f, 1.0f));
@@ -89,8 +92,8 @@ int main()
 
 	mesh->ConstructMesh();
 
-	Material* material = new Material("v_simple.bin", "f_simple.bin");
-	mesh->SetMaterial(material);
+	Material* material = new Material("../assets/shaders/v_simple.bin", "../assets/shaders/f_simple.bin");
+	mesh->SetMaterial(material);*/
 	
 	app->Run();
 	delete app;
