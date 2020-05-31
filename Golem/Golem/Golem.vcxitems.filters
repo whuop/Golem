@@ -50,5 +50,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Material.h">
       <Filter>Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Timer.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

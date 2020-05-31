@@ -14,11 +14,17 @@ namespace Golem::Graphics
 		Mesh();
 		~Mesh();
 
+		void Render(uint64_t state, float mtx[16]);
 		void ConstructMesh();
 
 		void AddVertex(const Golem::Math::Vector3f& vertex);
+		void AddVertices(const std::vector<Golem::Math::Vector3f>& vertices);
+
 		void AddColor(const Golem::Graphics::Color& color);
+		void AddColors(const std::vector<Golem::Graphics::Color>& colors);
+
 		void AddIndex(const int index);
+		void AddIndices(const std::vector<uint16_t>& indices);
 		void ClearMeshData();
 
 		void SetMaterial(const Material* material);
@@ -33,7 +39,7 @@ namespace Golem::Graphics
 
 		std::vector<Golem::Math::Vector3f> m_vertices;
 		std::vector<Golem::Graphics::Color> m_colors;
-		std::vector<int> m_indices;
+		std::vector<uint16_t> m_indices;
 	};
 }
 

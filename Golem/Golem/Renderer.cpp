@@ -67,10 +67,10 @@ void Renderer::Clear(Window* window)
 	int width, height;
 	SDL_GetWindowSize(window->GetSDLWindow(), &width, &height);
 
-	bgfx::reset(width, height, BGFX_RESET_VSYNC);
+	//bgfx::reset(width, height, BGFX_RESET_VSYNC);
 
 	//	Set view 0 default viewport
-	bgfx::setViewRect(0, 0, 0, width, height);
+	//bgfx::setViewRect(0, 0, 0, width, height);
 
 	//	This dummy draw call is there to make sure that view 0 is cleared if no other draw calls are submitted to view 0
 	bgfx::touch(0);

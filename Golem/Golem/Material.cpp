@@ -23,6 +23,12 @@ Material::~Material()
 	bgfx::destroy(m_shaderProgram);
 }
 
+void Material::Submit()
+{
+	//	Submit primitive for rendering to view 0
+	bgfx::submit(0, m_shaderProgram);
+}
+
 bgfx::ShaderHandle Golem::Graphics::Material::LoadShader(const char* path)
 {
 	auto fileSize = std::filesystem::file_size(path);

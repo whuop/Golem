@@ -14,6 +14,8 @@ namespace Golem::Graphics
 		Material();
 		Material(const char* vertexPath, const char* fragmentPath);
 		~Material();
+
+		void Submit();
 	private:
 		bgfx::ShaderHandle LoadShader(const char* path);
 

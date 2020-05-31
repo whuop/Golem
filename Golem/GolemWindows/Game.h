@@ -2,6 +2,8 @@
 
 #include "Application.h"
 
+#include "Timer.h"
+
 namespace Golem::Graphics
 {
 	class Mesh;
@@ -19,8 +21,9 @@ public:
 	void OnRender() override;
 
 private:
-
 	Golem::Graphics::Mesh* m_mesh;
 	Golem::Graphics::Material* m_material;
+
+	Golem::Core::Timer m_timer;
 };
 
