@@ -59,13 +59,14 @@ void Application::Run()
 					printf("WindowEvent Hidden");
 					break;
 				case SDL_WINDOWEVENT_MOVED:
-					printf("WindowEvent Moved");
+					printf("WindowEvent Moved %i %i", e.window.data1, e.window.data2);
+					this->WindowMoved(Vector2i(e.window.data1, e.window.data2));
 					break;
 				case SDL_WINDOWEVENT_RESIZED:
-					printf("WindowEvent Resized");
+					printf("WindowEvent Resized %i %i", e.window.data1, e.window.data2);
 					break;
 				case SDL_WINDOWEVENT_SIZE_CHANGED:
-					printf("WindowEvent SizeChanged");
+					printf("WindowEvent SizeChanged %i %i", e.window.data1, e.window.data2);
 					break;
 				case SDL_WINDOWEVENT_MINIMIZED:
 					printf("WindowEvent Minimized");
@@ -99,6 +100,15 @@ void Application::Run()
 void Application::Close()
 {
 	m_isRunning = false;
+}
+
+void Application::WindowMoved(const Vector2i& position)
+{
+}
+
+void Application::WindowResized(const Vector2i& size)
+{
+
 }
 
 const bool Application::GetIsRunning() const

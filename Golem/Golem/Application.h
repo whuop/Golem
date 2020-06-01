@@ -30,13 +30,18 @@ namespace Golem
 		virtual void OnInitialize() = 0;
 		virtual void OnUpdate() = 0;
 		virtual void OnRender() = 0;
+	protected:
+		virtual void OnWindowMoved(const Golem::Math::Vector2i& position) {}
+		virtual void OnWindowResized(const Golem::Math::Vector2i& size) {}
 
 	private:
-
 		bool m_isRunning;
 
 		Core::Window* m_window;
 		Core::Renderer* m_renderer;
+
+		void WindowMoved(const Golem::Math::Vector2i& position);
+		void WindowResized(const Golem::Math::Vector2i& size);
 	};
 }
 
