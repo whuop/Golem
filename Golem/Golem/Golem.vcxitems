@@ -31,6 +31,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Renderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Timer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Vector2f.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Vector2i.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Vector3f.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Vector4f.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)VertexLayouts.h" />

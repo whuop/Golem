@@ -2,18 +2,22 @@
 #include "Window.h"
 #include "Renderer.h"
 
+#include "Vector2i.h"
+
 #include <SDL.h>
 #include <stdio.h>
 
 using namespace Golem;
 using namespace Golem::Core;
+using namespace Golem::Math;
 
-Application::Application(int windowPosX, int windowPosY, int windowWidth, int windowHeight):
-	m_window(nullptr),
-	m_renderer(nullptr),
-	m_isRunning(false)
+
+Golem::Application::Application(const char* windowTitle, const Golem::Math::Vector2i& windowPosition, const Golem::Math::Vector2i windowSize):
+m_window(nullptr),
+m_renderer(nullptr),
+m_isRunning(false)
 {
-	m_window = new Window(windowPosX, windowPosY, windowWidth, windowHeight);
+	m_window = new Window(windowTitle, windowPosition, windowSize);
 	m_renderer = new Renderer(m_window);
 }
 
@@ -42,6 +46,43 @@ void Application::Run()
 			if (e.type == SDL_QUIT)
 			{
 				this->m_isRunning = false;
+			}
+
+			if (e.type == SDL_WINDOWEVENT)
+			{
+				switch (e.window.event)
+				{
+				case SDL_WINDOWEVENT_SHOWN:
+					printf("WindowEvent Shown");
+					break;
+				case SDL_WINDOWEVENT_HIDDEN:
+					printf("WindowEvent Hidden");
+					break;
+				case SDL_WINDOWEVENT_MOVED:
+					printf("WindowEvent Moved");
+					break;
+				case SDL_WINDOWEVENT_RESIZED:
+					printf("WindowEvent Resized");
+					break;
+				case SDL_WINDOWEVENT_SIZE_CHANGED:
+					printf("WindowEvent SizeChanged");
+					break;
+				case SDL_WINDOWEVENT_MINIMIZED:
+					printf("WindowEvent Minimized");
+					break;
+				case SDL_WINDOWEVENT_MAXIMIZED:
+					printf("WindowEvent Maximized");
+					break;
+				case SDL_WINDOWEVENT_FOCUS_GAINED:
+					printf("WindowEvent Focus Gained");
+					break;
+				case SDL_WINDOWEVENT_FOCUS_LOST:
+					printf("WindowEvent Focus Lost");
+					break;
+				default:
+
+					break;
+				}
 			}
 		}
 

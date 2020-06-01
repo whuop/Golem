@@ -7,7 +7,7 @@
 
 int main()
 {
-	Game* app = new Game(200, 200, 640, 480);
+	Game* app = new Game();
 	app->Run();
 	delete app;
 	return 0;

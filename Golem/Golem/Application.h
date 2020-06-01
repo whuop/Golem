@@ -8,10 +8,15 @@ namespace Golem
 		class Renderer;
 	}
 
+	namespace Math
+	{
+		struct Vector2i;
+	}
+
 	class Application
 	{
 	public:
-		Application(int windowPosX, int windowPosY, int windowWidth, int windowHeight);
+		Application(const char* windowTitle, const Golem::Math::Vector2i& windowPosition, const Golem::Math::Vector2i windowSize);
 		~Application();
 
 		void Run();

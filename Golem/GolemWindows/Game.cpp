@@ -4,6 +4,7 @@
 #include "Mesh.h"
 #include "Material.h"
 #include "Vector3f.h"
+#include "Vector2i.h"
 #include "VertexLayouts.h"
 
 #include <bx/math.h>
@@ -13,8 +14,8 @@ using namespace Golem::Graphics;
 using namespace Golem::Math;
 using namespace Golem::Core;
 
-Game::Game(int windowPosX, int windowPosY, int windowWidth, int windowHeight):
-	Application(windowPosX, windowPosY, windowWidth, windowHeight)
+Game::Game():
+	Application("Golem Windows", Vector2i(500, 500), Vector2i(1024, 768))
 {
 }
 
