@@ -24,7 +24,7 @@ void Game::OnInitialize()
 	PositionVertex::Init();
 	ColorVertex::Init();
 
-	m_mesh = new Mesh();
+	m_cubeMesh = new Mesh();
 	std::vector<Vector3f> vertices = {
 		{-1.0f,  1.0f,  1.0f},
 		{ 1.0f,  1.0f,  1.0f},
@@ -62,14 +62,17 @@ void Game::OnInitialize()
 		6, 3, 7
 	};
 
-	m_mesh->AddVertices(vertices);
-	m_mesh->AddColors(colors);
-	m_mesh->AddIndices(indices);
+	m_cubeMesh->AddVertices(vertices);
+	m_cubeMesh->AddColors(colors);
+	m_cubeMesh->AddIndices(indices);
 
-	m_mesh->ConstructMesh();
+	m_cubeMesh->ConstructMesh();
 
-	m_material = new Material("../assets/shaders/v_simple.bin", "../assets/shaders/f_simple.bin");
-	m_mesh->SetMaterial(m_material);
+	m_cubeMaterial = new Material("../assets/shaders/v_simple.bin", "../assets/shaders/f_simple.bin");
+	m_cubeMesh->SetMaterial(m_cubeMaterial);
+
+	m_rabbitMaterial = new Material("../assets/shaders/simple_lit.vert.bin", "../assets/shaders/simple_lit.frag.bin");
+	m_rabbitMesh = new Mesh();
 }
 
 void Game::OnUpdate()
@@ -90,9 +93,6 @@ void Game::OnRender()
 		float proj[16];
 		bx::mtxProj(proj, 60.0f, float(640) / float(480), 0.1f, 100.0f, bgfx::getCaps()->homogeneousDepth);
 		bgfx::setViewTransform(0, view, proj);
-
-		// Set view 0 default viewport
-		//bgfx::setViewRect(0, 0, 0, uint16_t(640), uint16_t(480));
 	}
 
 	uint64_t state = 0
@@ -120,8 +120,8 @@ void Game::OnRender()
 			mtx[13] = -15.0f + float(yy) * 3.0f;
 			mtx[14] = 0.0f;
 
-			m_mesh->Render(state, mtx);
-			m_material->Submit();
+			m_cubeMesh->Render(state, mtx);
+			m_cubeMaterial->Submit();
 		}
 	}
 }

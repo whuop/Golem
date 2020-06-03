@@ -29,8 +29,12 @@ protected:
 	void OnWindowMoved(const Golem::Math::Vector2i& position) override;
 
 private:
-	Golem::Graphics::Mesh* m_mesh;
-	Golem::Graphics::Material* m_material;
+
+	Golem::Graphics::Mesh* m_rabbitMesh;
+	Golem::Graphics::Material* m_rabbitMaterial;
+
+	Golem::Graphics::Mesh* m_cubeMesh;
+	Golem::Graphics::Material* m_cubeMaterial;
 
 	Golem::Core::Timer m_timer;
 };
