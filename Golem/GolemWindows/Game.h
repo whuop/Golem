@@ -10,6 +10,10 @@ namespace Golem::Graphics
 	class Material;
 }
 
+namespace Golem::Math
+{
+	struct Vector2i;
+}
 
 class Game : public Golem::Application
 {
@@ -19,6 +23,10 @@ public:
 	void OnInitialize() override;
 	void OnUpdate() override;
 	void OnRender() override;
+
+protected:
+	void OnWindowResized(const Golem::Math::Vector2i& size) override;
+	void OnWindowMoved(const Golem::Math::Vector2i& position) override;
 
 private:
 	Golem::Graphics::Mesh* m_mesh;

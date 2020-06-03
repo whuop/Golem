@@ -16,7 +16,8 @@ Window::Window(const char* title, const Vector2i& position, const Vector2i& size
 		return;
 	}
 
-	m_sdlWindow = SDL_CreateWindow(title, position.X, position.Y, size.X, size.Y, SDL_WINDOW_SHOWN);
+	Uint32 flags = SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE;
+	m_sdlWindow = SDL_CreateWindow(title, position.X, position.Y, size.X, size.Y, flags);
 	if (m_sdlWindow == nullptr)
 	{
 		printf("SDL Window could not be created! SDL_Error: %s", SDL_GetError());
@@ -31,6 +32,12 @@ Window::~Window()
 	SDL_DestroyWindow(m_sdlWindow);
 	m_sdlWindow = nullptr;
 	SDL_Quit();
+}
+
+void Window::RefreshPositionAndSize()
+{
+	SDL_GetWindowPosition(m_sdlWindow, &m_position.X, &m_position.Y);
+	SDL_GetWindowSize(m_sdlWindow, &m_size.X, &m_size.Y);
 }
 
 SDL_Window* Window::GetSDLWindow() const

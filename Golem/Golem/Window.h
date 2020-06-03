@@ -11,6 +11,8 @@ namespace Golem::Core
 		Window(const char* title, const Golem::Math::Vector2i& position, const Golem::Math::Vector2i& size);
 		~Window();
 
+		void RefreshPositionAndSize();
+
 		SDL_Window* GetSDLWindow() const;
 		const Golem::Math::Vector2i& GetWindowPosition() const;
 		const Golem::Math::Vector2i& GetWindowSize() const;

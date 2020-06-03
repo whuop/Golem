@@ -23,14 +23,14 @@ namespace Golem
 		void Close();
 
 		const bool GetIsRunning() const;
-
 		const Core::Renderer& GetRenderer() const;
 		const Core::Window& GetWindow() const;
 
+	protected:
 		virtual void OnInitialize() = 0;
 		virtual void OnUpdate() = 0;
 		virtual void OnRender() = 0;
-	protected:
+
 		virtual void OnWindowMoved(const Golem::Math::Vector2i& position) {}
 		virtual void OnWindowResized(const Golem::Math::Vector2i& size) {}
 

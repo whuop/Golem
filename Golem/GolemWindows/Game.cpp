@@ -85,13 +85,14 @@ void Game::OnRender()
 	{
 		float view[16];
 		bx::mtxLookAt(view, eye, at);
+		
 
 		float proj[16];
 		bx::mtxProj(proj, 60.0f, float(640) / float(480), 0.1f, 100.0f, bgfx::getCaps()->homogeneousDepth);
 		bgfx::setViewTransform(0, view, proj);
 
 		// Set view 0 default viewport
-		bgfx::setViewRect(0, 0, 0, uint16_t(640), uint16_t(480));
+		//bgfx::setViewRect(0, 0, 0, uint16_t(640), uint16_t(480));
 	}
 
 	uint64_t state = 0
@@ -123,4 +124,14 @@ void Game::OnRender()
 			m_material->Submit();
 		}
 	}
+}
+
+void Game::OnWindowResized(const Golem::Math::Vector2i& size)
+{
+	printf("Window Resized: %i/%i", size.X, size.Y);
+}
+
+void Game::OnWindowMoved(const Golem::Math::Vector2i& position)
+{
+	printf("Window Moved: %i/%i", position.X, position.Y);
 }

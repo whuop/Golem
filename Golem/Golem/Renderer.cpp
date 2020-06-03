@@ -44,13 +44,10 @@ Renderer::Renderer(Window* window)
 	bgfx::RenderFrame();
 	bgfx::init();
 
-	int width, height;
-	SDL_GetWindowSize(window->GetSDLWindow(), &width, &height);
-
-	bgfx::reset(width, height, BGFX_RESET_VSYNC);
+	bgfx::reset(window->GetWindowSize().X, window->GetWindowSize().Y, BGFX_RESET_VSYNC);
 
 	//	Enable debug text
-	bgfx::setDebug(BGFX_DEBUG_TEXT);
+	//bgfx::setDebug(BGFX_DEBUG_TEXT);
 
 	//	Set view 0 clear state
 	bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x303030ff, 1.0f, 0);
@@ -64,28 +61,19 @@ Renderer::~Renderer()
 
 void Renderer::Clear(Window* window)
 {
-	int width, height;
-	SDL_GetWindowSize(window->GetSDLWindow(), &width, &height);
-
-	//bgfx::reset(width, height, BGFX_RESET_VSYNC);
-
-	//	Set view 0 default viewport
-	//bgfx::setViewRect(0, 0, 0, width, height);
-
+	bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x303030ff, 1.0f, 0);
 	//	This dummy draw call is there to make sure that view 0 is cleared if no other draw calls are submitted to view 0
 	bgfx::touch(0);
 
 	//	Use debug font to print infomration about this example
-	bgfx::dbgTextClear();
+	//bgfx::dbgTextClear();
 }
 
 void Renderer::Draw(Window* window)
 {
-	int width, height;
-	SDL_GetWindowSize(window->GetSDLWindow(), &width, &height);
-	bgfx::dbgTextImage(
-		bx::max<uint16_t>(uint16_t(width / 2 / 8), 20) - 20
-		, bx::max<uint16_t>(uint16_t(height / 2 / 16), 6) - 6
+	/*bgfx::dbgTextImage(
+		bx::max<uint16_t>(uint16_t(window->GetWindowSize().X / 2 / 8), 20) - 20
+		, bx::max<uint16_t>(uint16_t(window->GetWindowSize().Y / 2 / 16), 6) - 6
 		, 40
 		, 12
 		, s_logo
@@ -103,7 +91,13 @@ void Renderer::Draw(Window* window)
 		, stats->height
 		, stats->textWidth
 		, stats->textHeight
-	);
+	);*/
 
 	bgfx::frame();
+}
+
+void Renderer::SetViewRect(int viewID, int posX, int posY, int width, int height)
+{
+	bgfx::reset(width, height, BGFX_RESET_VSYNC);
+	bgfx::setViewRect(viewID, posX, posY, width, height);
 }
