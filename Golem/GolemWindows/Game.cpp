@@ -10,6 +10,8 @@
 #include <bx/math.h>
 #include <bx/bx.h>
 
+#include <AssImpImporter.h>
+
 using namespace Golem::Graphics;
 using namespace Golem::Math;
 using namespace Golem::Core;
@@ -72,7 +74,11 @@ void Game::OnInitialize()
 	m_cubeMesh->SetMaterial(m_cubeMaterial);
 
 	m_rabbitMaterial = new Material("../assets/shaders/simple_lit.vert.bin", "../assets/shaders/simple_lit.frag.bin");
-	m_rabbitMesh = new Mesh();
+	
+	Golem::Graphics::Importers::AssImpImporter importer;
+	m_rabbitMesh = importer.LoadMesh("../assets/meshes/suzanne.blend");
+	m_rabbitMesh->ConstructMesh();
+	m_rabbitMesh->SetMaterial(m_rabbitMaterial);
 }
 
 void Game::OnUpdate()
@@ -124,6 +130,14 @@ void Game::OnRender()
 			m_cubeMaterial->Submit();
 		}
 	}
+
+	float mtx[16];
+	bx::mtxRotateXY(mtx, time + 0.21f, time + 0.37f);
+	mtx[12] = 0.0f;
+	mtx[13] = 0.0f;
+	mtx[14] = -15.0f;
+	m_rabbitMesh->Render(state, mtx);
+	m_rabbitMaterial->Submit();
 }
 
 void Game::OnWindowResized(const Golem::Math::Vector2i& size)

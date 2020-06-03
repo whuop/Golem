@@ -10,6 +10,9 @@
     <Filter Include="Math">
       <UniqueIdentifier>{3a564483-c3be-415c-a455-e57734a40081}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\Importers">
+      <UniqueIdentifier>{05bb2699-7573-4351-bc31-f9288ba3d38c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Window.cpp">
@@ -28,6 +31,10 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)VertexLayouts.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)AssImpImporter.cpp">
+      <Filter>Graphics\Importers</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)IMeshImporter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Window.h">
@@ -66,5 +73,8 @@
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Vector2i.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)AssImpImporter.h">
+      <Filter>Graphics\Importers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
