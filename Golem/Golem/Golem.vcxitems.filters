@@ -34,7 +34,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)AssImpImporter.cpp">
       <Filter>Graphics\Importers</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)IMeshImporter.h" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)IMeshImporter.h">
+      <Filter>Graphics\Importers</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ServiceProvider.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Window.h">
@@ -75,6 +80,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Vector2i.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)AssImpImporter.h">
       <Filter>Graphics\Importers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ServiceProvider.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)IService.h">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
