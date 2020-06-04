@@ -13,6 +13,9 @@
     <Filter Include="Graphics\Importers">
       <UniqueIdentifier>{05bb2699-7573-4351-bc31-f9288ba3d38c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ECS">
+      <UniqueIdentifier>{ca1cb031-eefc-49bb-ace2-719056e67272}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Window.cpp">
@@ -37,8 +40,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)IMeshImporter.h">
       <Filter>Graphics\Importers</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)ServiceProvider.cpp">
-      <Filter>Core</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)EntityService.cpp">
+      <Filter>ECS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +89,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)IService.h">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)IEntityService.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)EntityService.h">
+      <Filter>ECS</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -12,9 +12,15 @@
 
 #include <AssImpImporter.h>
 
+#include "ServiceProvider.h"
+#include "IEntityService.h"
+#include "EntityService.h"
+
 using namespace Golem::Graphics;
 using namespace Golem::Math;
 using namespace Golem::Core;
+using namespace Golem::ECS;
+
 
 Game::Game():
 	Application("Golem Windows", Vector2i(500, 500), Vector2i(1024, 768))
@@ -23,6 +29,16 @@ Game::Game():
 
 void Game::OnInitialize()
 {
+	ServiceProvider::RegisterService<IEntityService>(new Golem::ECS::EntityService());
+
+	printf("Has EntityService: %s\n", ServiceProvider::HasService<IEntityService>() ? "true" : "false");
+
+	IEntityService& entityService = ServiceProvider::GetService<IEntityService>();
+	printf("EntityService: %zu\n", typeid(entityService).hash_code());
+
+	ServiceProvider::UnregisterService<IEntityService>();
+	printf("Has EntityService: %s\n", ServiceProvider::HasService<IEntityService>() ? "true" : "false");
+
 	PositionVertex::Init();
 	ColorVertex::Init();
 

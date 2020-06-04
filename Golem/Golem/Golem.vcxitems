@@ -16,11 +16,11 @@
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Application.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)AssImpImporter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)EntityService.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)IMeshImporter.h" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Material.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Mesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Renderer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)ServiceProvider.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)VertexLayouts.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Window.cpp" />
   </ItemGroup>
@@ -29,6 +29,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)AssImpImporter.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)bgfx_logo.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Color.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)EntityService.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)IEntityService.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)IService.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Material.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Matrix4x4.h" />
