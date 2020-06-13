@@ -43,6 +43,15 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)EntityService.cpp">
       <Filter>ECS</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entity.cpp">
+      <Filter>ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Component.cpp">
+      <Filter>ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Guid.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Window.h">
@@ -95,6 +104,15 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)EntityService.h">
       <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entity.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Component.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Guid.h">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

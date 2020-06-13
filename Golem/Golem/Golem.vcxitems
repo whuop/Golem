@@ -16,7 +16,10 @@
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Application.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)AssImpImporter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Component.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)EntityService.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Guid.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)IMeshImporter.h" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Material.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Mesh.cpp" />
@@ -29,7 +32,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)AssImpImporter.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)bgfx_logo.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Color.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Component.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)EntityService.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Guid.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)IEntityService.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)IService.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Material.h" />
