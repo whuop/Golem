@@ -1,4 +1,5 @@
 #pragma once
+#include "NonCopyable.h"
 #include <bx/bx.h>
 #include <bx/thread.h>
 
@@ -7,7 +8,7 @@ namespace Golem
 	namespace Core
 	{
 		class Window;
-		class Renderer
+		class Renderer : public NonCopyable
 		{
 		public:
 			Renderer(Window* window);

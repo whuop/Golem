@@ -1,4 +1,5 @@
 #pragma once
+#include "NonCopyable.h"
 
 namespace Golem
 {
@@ -13,7 +14,7 @@ namespace Golem
 		struct Vector2i;
 	}
 
-	class Application
+	class Application : public Golem::Core::NonCopyable
 	{
 	public:
 		Application(const char* windowTitle, const Golem::Math::Vector2i& windowPosition, const Golem::Math::Vector2i windowSize);

@@ -5,7 +5,7 @@ using namespace Golem::ECS;
 
 Entity* Golem::ECS::EntityService::CreateEntity(const char* name)
 {
-	Entity* entity = new Entity();
+	Entity* entity = new Entity(name);
 	m_entities.push_back(entity);
 	return entity;
 }

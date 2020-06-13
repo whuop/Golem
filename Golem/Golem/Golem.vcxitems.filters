@@ -114,5 +114,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Guid.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)NonCopyable.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

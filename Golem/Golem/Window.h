@@ -1,11 +1,11 @@
 #pragma once
 #include "Vector2i.h"
+#include "NonCopyable.h"
 
 struct SDL_Window;
 namespace Golem::Core
 {
-
-	class Window
+	class Window : public NonCopyable
 	{
 	public:
 		Window(const char* title, const Golem::Math::Vector2i& position, const Golem::Math::Vector2i& size);
