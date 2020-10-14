@@ -1,15 +1,15 @@
 #include "Renderer.h"
+
+#include <cstdio>
+
 #include "Window.h"
 #include "SDL.h"
 #include "SDL_syswm.h"
 #include <bgfx/bgfx.h>
 #include <bgfx/platform.h>>
 #include <bx/bx.h>
-#include <bx/mutex.h>
-#include <bx/thread.h>
 
 #include "bgfx_logo.h"
-#include <dear-imgui/imgui.h>
 
 using namespace Golem::Core;
 
@@ -42,13 +42,17 @@ Renderer::Renderer(Window* window)
 	bgfx::setPlatformData(pd);
 
 	bgfx::RenderFrame();
-	bgfx::init();
 
-	bgfx::reset(window->GetWindowSize().X, window->GetWindowSize().Y, BGFX_RESET_VSYNC);
+	bgfx::Init bgfxInit;
+	bgfxInit.type = bgfx::RendererType::Count;
+	bgfxInit.resolution.width = window->GetWindowSize().X;
+	bgfxInit.resolution.height = window->GetWindowSize().Y;
+	bgfxInit.resolution.reset = BGFX_RESET_VSYNC;
+	bgfx::init(bgfxInit);
 
+	SetViewRect(0, 0, 0, window->GetWindowSize().X, window->GetWindowSize().Y);
 	//	Set view 0 clear state
-	bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x303030ff, 1.0f, 0);
-
+	bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x443355FF, 1.0f, 0);
 }
 
 Renderer::~Renderer()
@@ -58,7 +62,7 @@ Renderer::~Renderer()
 
 void Renderer::Clear(Window* window)
 {
-	bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x303030ff, 1.0f, 0);
+	bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x443355FF, 1.0f, 0);
 	//	This dummy draw call is there to make sure that view 0 is cleared if no other draw calls are submitted to view 0
 	bgfx::touch(0);
 }

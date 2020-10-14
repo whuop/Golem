@@ -18,7 +18,7 @@ namespace Golem
 	{
 	public:
 		Application(const char* windowTitle, const Golem::Math::Vector2i& windowPosition, const Golem::Math::Vector2i windowSize);
-		~Application();
+		virtual ~Application();
 
 		void Run();
 		void Close();

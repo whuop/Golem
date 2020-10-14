@@ -65,6 +65,18 @@ void Game::OnInitialize()
 		{1, 0, 0, 1}
 	};
 
+	/*std::vector<PositionColorVertex> cubeVertices[] =
+	{
+		{-1.0f,  1.0f,  1.0f, 0xff000000 },
+		{ 1.0f,  1.0f,  1.0f, 0xff0000ff },
+		{-1.0f, -1.0f,  1.0f, 0xff00ff00 },
+		{ 1.0f, -1.0f,  1.0f, 0xff00ffff },
+		{-1.0f,  1.0f, -1.0f, 0xffff0000 },
+		{ 1.0f,  1.0f, -1.0f, 0xffff00ff },
+		{-1.0f, -1.0f, -1.0f, 0xffffff00 },
+		{ 1.0f, -1.0f, -1.0f, 0xffffffff },
+	};*/
+
 	std::vector<uint16_t> indices = { 
 		0, 1, 2, // 0
 		1, 3, 2,
@@ -111,7 +123,6 @@ void Game::OnRender()
 		float view[16];
 		bx::mtxLookAt(view, eye, at);
 		
-
 		float proj[16];
 		bx::mtxProj(proj, 60.0f, float(640) / float(480), 0.1f, 100.0f, bgfx::getCaps()->homogeneousDepth);
 		bgfx::setViewTransform(0, view, proj);
@@ -152,8 +163,8 @@ void Game::OnRender()
 	mtx[12] = 0.0f;
 	mtx[13] = 0.0f;
 	mtx[14] = -15.0f;
-	m_rabbitMesh->Render(state, mtx);
-	m_rabbitMaterial->Submit();
+	//m_rabbitMesh->Render(state, mtx);
+	//m_rabbitMaterial->Submit();
 }
 
 void Game::OnWindowResized(const Golem::Math::Vector2i& size)

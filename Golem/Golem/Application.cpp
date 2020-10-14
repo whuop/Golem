@@ -88,8 +88,9 @@ void Application::Run()
 
 		this->OnUpdate();
 
-		m_renderer->Clear(m_window);
-
+ 		m_renderer->Clear(m_window);
+		
+		
 		this->OnRender();
 
 		m_renderer->Draw(m_window);
