@@ -16,6 +16,9 @@
     <Filter Include="ECS">
       <UniqueIdentifier>{ca1cb031-eefc-49bb-ace2-719056e67272}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{f21b4c7a-7124-4062-b427-5e953219b010}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Window.cpp">
@@ -89,7 +92,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Matrix4x4.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Vector2i.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)AssImpImporter.h">
       <Filter>Graphics\Importers</Filter>
     </ClInclude>
@@ -116,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)NonCopyable.h">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Vector2i.h">
+      <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

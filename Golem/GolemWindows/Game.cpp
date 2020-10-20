@@ -3,8 +3,8 @@
 
 #include "Mesh.h"
 #include "Material.h"
-#include "Vector3f.h"
-#include "Vector2i.h"
+#include "Math/Vector3f.h"
+#include "Math/Vector2i.h"
 #include "VertexLayouts.h"
 
 #include <bx/math.h>
@@ -15,6 +15,9 @@
 #include "ServiceProvider.h"
 #include "IEntityService.h"
 #include "EntityService.h"
+#include "Window.h"
+
+#include "imgui/imgui.h"
 
 using namespace Golem::Graphics;
 using namespace Golem::Math;
@@ -25,6 +28,11 @@ using namespace Golem::ECS;
 Game::Game():
 	Application("Golem Windows", Vector2i(500, 500), Vector2i(1024, 768))
 {
+}
+
+Game::~Game()
+{
+	imguiDestroy();
 }
 
 void Game::OnInitialize()
@@ -104,9 +112,26 @@ void Game::OnInitialize()
 	m_rabbitMaterial = new Material("../assets/shaders/simple_lit.vert.bin", "../assets/shaders/simple_lit.frag.bin");
 	
 	Golem::Graphics::Importers::AssImpImporter importer;
-	m_rabbitMesh = importer.LoadMesh("../assets/meshes/suzanne.blend");
+	m_rabbitMesh = importer.LoadMesh("../assets/meshes/fruit-juice.fbx");
 	m_rabbitMesh->ConstructMesh();
 	m_rabbitMesh->SetMaterial(m_rabbitMaterial);
+
+	//	Set up rendering transforms
+	Vector3f eyePos(0.0f, 0.0f, -35.0f);
+	Vector3f lookAtPos(0.0f, 0.0f, 0.0f);
+	//bx::Vec3 at = bx::Vec3(0.0f, 0.0f, 0.0f);
+	//bx::Vec3 eye = bx::Vec3(0.0f, 0.0f, -35.0f);
+
+	m_view.LookAt(eyePos, lookAtPos);
+	//float view[16];
+	//bx::mtxLookAt(view, eye, at);
+
+	m_projection.Projection(60.0f, float(640) / float(480), 0.1f, 100.0f);
+	//float proj[16];
+	//bx::mtxProj(proj, 60.0f, float(640) / float(480), 0.1f, 100.0f, bgfx::getCaps()->homogeneousDepth);
+	bgfx::setViewTransform(0, m_view.Data, m_projection.Data);
+
+	imguiCreate();
 }
 
 void Game::OnUpdate()
@@ -115,19 +140,6 @@ void Game::OnUpdate()
 
 void Game::OnRender()
 {
-	bx::Vec3 at = bx::Vec3(0.0f, 0.0f, 0.0f);
-	bx::Vec3 eye = bx::Vec3(0.0f, 0.0f, -35.0f);
-
-	//	Set view and projection matrix for view 0
-	{
-		float view[16];
-		bx::mtxLookAt(view, eye, at);
-		
-		float proj[16];
-		bx::mtxProj(proj, 60.0f, float(640) / float(480), 0.1f, 100.0f, bgfx::getCaps()->homogeneousDepth);
-		bgfx::setViewTransform(0, view, proj);
-	}
-
 	uint64_t state = 0
 		| BGFX_STATE_WRITE_R
 		| BGFX_STATE_WRITE_G 
@@ -142,27 +154,47 @@ void Game::OnRender()
 
 	float time = m_timer.elapsed();
 
+	imguiBeginFrame(0, 0, 0, 0, m_window->GetWindowSize().X, m_window->GetWindowSize().Y);
+
+	bool open = true;
+	if (!ImGui::Begin("About Dear Imgui", &open, ImGuiWindowFlags_AlwaysAutoResize))
+	{
+		ImGui::End();
+	}
+	else
+	{
+		ImGui::Text("Dear ImGUI %s", ImGui::GetVersion());
+		ImGui::End();
+	}
+	
+	imguiEndFrame();
 	//	Submit cubes
 	for (uint32_t yy = 0; yy < 11; ++yy)
 	{
 		for (uint32_t xx = 0; xx < 11; ++xx)
 		{
-			float mtx[16];
+			m_modelTransform.SetToIdentity();
+			m_modelTransform.RotateXY(time + xx * 0.21f, time + yy * 0.37f);
+			m_modelTransform.Translate(-15.0f + float(xx) * 3.0f,
+									-15.0f + float(yy) * 3.0f,
+									0.0f);
+			/*float mtx[16];
 			bx::mtxRotateXY(mtx, time + xx * 0.21f, time + yy * 0.37f);
 			mtx[12] = -15.0f + float(xx) * 3.0f;
 			mtx[13] = -15.0f + float(yy) * 3.0f;
-			mtx[14] = 0.0f;
+			mtx[14] = 0.0f;*/
 
-			m_cubeMesh->Render(state, mtx);
+			m_cubeMesh->Render(state, m_modelTransform);
 			m_cubeMaterial->Submit();
 		}
 	}
 
-	float mtx[16];
-	bx::mtxRotateXY(mtx, time + 0.21f, time + 0.37f);
-	mtx[12] = 0.0f;
-	mtx[13] = 0.0f;
-	mtx[14] = -15.0f;
+	//float mtx[16];
+	//bx::mtxRotateXY(mtx, time + 0.21f, time + 0.37f);
+	//mtx[12] = 0.0f;
+	//mtx[13] = 0.0f;
+	//mtx[14] = 0.0f;
+	
 	//m_rabbitMesh->Render(state, mtx);
 	//m_rabbitMaterial->Submit();
 }

@@ -37,3 +37,5 @@ Golem/GolemWindows/x64
 Golem/x64
 Golem/GolemWindows/temp
 builds/
+ext/bgfx/bin
+Golem/builds

@@ -1,9 +1,12 @@
 #include "Mesh.h"
 
 #include "VertexLayouts.h"
+#include "Math/Matrix4x4.h"
+#include <bx/bx.h>
 
 using namespace Golem;
 using namespace Golem::Graphics;
+using namespace Golem::Math;
 
 Mesh::Mesh():
 	m_positionBufferHandle(),
@@ -21,11 +24,11 @@ Mesh::~Mesh()
 	bgfx::destroy(m_indexBufferHandle);
 }
 
-void Mesh::Render(uint64_t state, float mtx[16])
+void Mesh::Render(uint64_t state, const Matrix4x4& transformMtx)
 {
 	//	Set rendering model matrix
-	bgfx::setTransform(mtx);
-
+	bgfx::setTransform(transformMtx.Data);
+	
 	//	Set vertex and index buffer
 	bgfx::setVertexBuffer(0, m_positionBufferHandle);
 	bgfx::setVertexBuffer(1, m_colorBufferHandle);

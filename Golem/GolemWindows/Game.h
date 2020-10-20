@@ -3,6 +3,7 @@
 #include "Application.h"
 
 #include "Timer.h"
+#include "Math/Matrix4x4.h"
 
 namespace Golem::Graphics
 {
@@ -19,7 +20,8 @@ class Game : public Golem::Application
 {
 public:
 	Game();
-
+	~Game() override;
+	
 	void OnInitialize() override;
 	void OnUpdate() override;
 	void OnRender() override;
@@ -37,5 +39,9 @@ private:
 	Golem::Graphics::Material* m_cubeMaterial;
 
 	Golem::Core::Timer m_timer;
+
+	Golem::Math::Matrix4x4 m_projection;
+	Golem::Math::Matrix4x4 m_view;
+	Golem::Math::Matrix4x4 m_modelTransform;
 };
 

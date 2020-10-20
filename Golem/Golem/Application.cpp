@@ -2,10 +2,12 @@
 #include "Window.h"
 #include "Renderer.h"
 
-#include "Vector2i.h"
+#include "Math/Vector2i.h"
 
 #include <SDL.h>
+//#include <imgui/imgui.h>
 #include <stdio.h>
+//#include "PerformanceDialog.h"
 
 using namespace Golem;
 using namespace Golem::Core;
@@ -15,16 +17,20 @@ using namespace Golem::Math;
 Golem::Application::Application(const char* windowTitle, const Golem::Math::Vector2i& windowPosition, const Golem::Math::Vector2i windowSize):
 m_window(nullptr),
 m_renderer(nullptr),
-m_isRunning(false)
+m_isRunning(false)//,
+//m_performanceDialog(new PerformanceDialog())
 {
 	m_window = new Window(windowTitle, windowPosition, windowSize);
 	m_renderer = new Renderer(m_window);
+	//imguiCreate();
 }
 
 Application::~Application()
 {
 	if (m_window != nullptr)
 	{
+		//imguiDestroy();
+		
 		delete m_renderer;
 		delete m_window;
 		m_renderer = nullptr;
@@ -86,6 +92,8 @@ void Application::Run()
 			}
 		}
 
+		DrawUI();
+		
 		this->OnUpdate();
 
  		m_renderer->Clear(m_window);
@@ -95,6 +103,23 @@ void Application::Run()
 
 		m_renderer->Draw(m_window);
 	}
+}
+
+void Application::DrawUI()
+{
+	/*imguiBeginFrame(m_mouseState.m_mx
+		, m_mouseState.m_my
+		, (m_mouseState.m_buttons[entry::MouseButton::Left] ? IMGUI_MBUT_LEFT : 0)
+		| (m_mouseState.m_buttons[entry::MouseButton::Right] ? IMGUI_MBUT_RIGHT : 0)
+		| (m_mouseState.m_buttons[entry::MouseButton::Middle] ? IMGUI_MBUT_MIDDLE : 0)
+		, m_mouseState.m_mz
+		, uint16_t(m_window->GetWindowSize().X)
+		, uint16_t(m_window->GetWindowSize().Y)
+	);
+
+	m_performanceDialog->show();
+	
+	imguiEndFrame();*/
 }
 
 void Application::Close()

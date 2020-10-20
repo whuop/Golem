@@ -1,6 +1,9 @@
 #pragma once
 #include "NonCopyable.h"
 
+//#include "common/entry/input.h"
+
+class PerformanceDialog;
 namespace Golem
 {
 	namespace Core
@@ -35,12 +38,18 @@ namespace Golem
 		virtual void OnWindowMoved(const Golem::Math::Vector2i& position) {}
 		virtual void OnWindowResized(const Golem::Math::Vector2i& size) {}
 
-	private:
-		bool m_isRunning;
-
 		Core::Window* m_window;
 		Core::Renderer* m_renderer;
 
+	private:
+		bool m_isRunning;
+
+		
+
+		//entry::MouseState m_mouseState;
+		//PerformanceDialog* m_performanceDialog;
+
+		void DrawUI();
 		void WindowMoved(const Golem::Math::Vector2i& position);
 		void WindowResized(const Golem::Math::Vector2i& size);
 	};

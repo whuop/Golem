@@ -1,5 +1,5 @@
 #pragma once
-#include "Vector2i.h"
+#include "Math/Vector2i.h"
 #include "NonCopyable.h"
 
 struct SDL_Window;

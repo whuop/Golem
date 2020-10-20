@@ -1,6 +1,6 @@
 #include "AssImpImporter.h"
 #include "Mesh.h"
-#include "Vector3f.h"
+#include "Math/Vector3f.h"
 #include "Color.h"
 
 #include <assimp/Importer.hpp>
@@ -74,7 +74,7 @@ Mesh* AssImpImporter::ProcessData(const aiScene* scene)
 			}
 		}
 
-		/*for (size_t colorChannel = 0; colorChannel < mesh->GetNumColorChannels(); colorChannel++)
+		for (size_t colorChannel = 0; colorChannel < mesh->GetNumColorChannels(); colorChannel++)
 		{
 			if (colorChannel == 0)	// Only supports a channel 0 currently.
 			{
@@ -86,7 +86,10 @@ Mesh* AssImpImporter::ProcessData(const aiScene* scene)
 					outputMesh->AddColor(Color(color.r, color.g, color.b, color.a));
 				}
 			}
-		}*/
+		}
+
+		size_t numUVs = mesh->GetNumUVChannels();
+		printf("Num UVChannels %i", numUVs);
 	}
 	return outputMesh;
 }

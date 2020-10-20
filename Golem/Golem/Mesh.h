@@ -2,19 +2,25 @@
 #include <bgfx/bgfx.h>
 #include <vector>
 
-#include "Vector3f.h"
+#include "Math/Vector3f.h"
 #include "Color.h"
+
+namespace Golem::Math
+{
+	struct Matrix4x4;
+}
 
 namespace Golem::Graphics
 {
 	class Material;
+	
 	class Mesh
 	{
 	public:
 		Mesh();
 		~Mesh();
 
-		void Render(uint64_t state, float mtx[16]);
+		void Render(uint64_t state, const Golem::Math::Matrix4x4& transformMtx);
 		void ConstructMesh();
 
 		void AddVertex(const Golem::Math::Vector3f& vertex);
@@ -22,7 +28,7 @@ namespace Golem::Graphics
 
 		void AddColor(const Golem::Graphics::Color& color);
 		void AddColors(const std::vector<Golem::Graphics::Color>& colors);
-
+		
 		void AddIndex(const int index);
 		void AddIndices(const std::vector<uint16_t>& indices);
 		void ClearMeshData();
