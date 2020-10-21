@@ -11,6 +11,8 @@
 #include <bx/bx.h>
 
 #include <AssImpImporter.h>
+#include <SDL_events.h>
+
 
 #include "ServiceProvider.h"
 #include "IEntityService.h"
@@ -153,8 +155,8 @@ void Game::OnRender()
 		;
 
 	float time = m_timer.elapsed();
-
-	imguiBeginFrame(0, 0, 0, 0, m_window->GetWindowSize().X, m_window->GetWindowSize().Y);
+	uint8_t button = m_mouse.LeftButton ? 1 : m_mouse.RightButton ? 2 : 0;
+	imguiBeginFrame(m_mouse.Position.X, m_mouse.Position.Y, button, 0, m_window->GetWindowSize().X, m_window->GetWindowSize().Y);
 
 	bool open = true;
 	if (!ImGui::Begin("About Dear Imgui", &open, ImGuiWindowFlags_AlwaysAutoResize))
@@ -168,6 +170,9 @@ void Game::OnRender()
 	}
 	
 	imguiEndFrame();
+
+	printf("Time: %f\n", time);
+	
 	//	Submit cubes
 	for (uint32_t yy = 0; yy < 11; ++yy)
 	{

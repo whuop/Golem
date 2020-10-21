@@ -5,9 +5,7 @@
 #include "Math/Vector2i.h"
 
 #include <SDL.h>
-//#include <imgui/imgui.h>
 #include <stdio.h>
-//#include "PerformanceDialog.h"
 
 using namespace Golem;
 using namespace Golem::Core;
@@ -17,19 +15,16 @@ using namespace Golem::Math;
 Golem::Application::Application(const char* windowTitle, const Golem::Math::Vector2i& windowPosition, const Golem::Math::Vector2i windowSize):
 m_window(nullptr),
 m_renderer(nullptr),
-m_isRunning(false)//,
-//m_performanceDialog(new PerformanceDialog())
+m_isRunning(false)
 {
 	m_window = new Window(windowTitle, windowPosition, windowSize);
 	m_renderer = new Renderer(m_window);
-	//imguiCreate();
 }
 
 Application::~Application()
 {
 	if (m_window != nullptr)
 	{
-		//imguiDestroy();
 		
 		delete m_renderer;
 		delete m_window;
@@ -54,15 +49,39 @@ void Application::Run()
 				this->m_isRunning = false;
 			}
 
+			//	Mouse Events
+			switch(e.type)
+			{
+			case SDL_MOUSEMOTION:
+				SDL_GetMouseState(&m_mouse.Position.X, &m_mouse.Position.Y);
+				break;
+			case SDL_MOUSEBUTTONDOWN:
+				if (e.button.button == SDL_BUTTON_LEFT)
+					m_mouse.LeftButton = true;
+				else if (e.button.button == SDL_BUTTON_RIGHT)
+					m_mouse.RightButton = true;
+				break;
+			case SDL_MOUSEBUTTONUP:
+				if (e.button.button == SDL_BUTTON_LEFT)
+					m_mouse.LeftButton = false;
+				else if (e.button.button == SDL_BUTTON_RIGHT)
+					m_mouse.RightButton = false;
+				break;
+			}
+
+			//	Keyboard Events
+
+
+			//	Window Events
 			if (e.type == SDL_WINDOWEVENT)
 			{
 				switch (e.window.event)
 				{
 				case SDL_WINDOWEVENT_SHOWN:
-					printf("WindowEvent Shown");
+					printf("WindowEvent Shown\n");
 					break;
 				case SDL_WINDOWEVENT_HIDDEN:
-					printf("WindowEvent Hidden");
+					printf("WindowEvent Hidden\n");
 					break;
 				case SDL_WINDOWEVENT_MOVED:
 					this->WindowMoved(Vector2i(e.window.data1, e.window.data2));
@@ -74,16 +93,16 @@ void Application::Run()
 					this->WindowResized(Vector2i(e.window.data1, e.window.data2));
 					break;
 				case SDL_WINDOWEVENT_MINIMIZED:
-					printf("WindowEvent Minimized");
+					printf("WindowEvent Minimized\n");
 					break;
 				case SDL_WINDOWEVENT_MAXIMIZED:
-					printf("WindowEvent Maximized");
+					printf("WindowEvent Maximized\n");
 					break;
 				case SDL_WINDOWEVENT_FOCUS_GAINED:
-					printf("WindowEvent Focus Gained");
+					printf("WindowEvent Focus Gained\n");
 					break;
 				case SDL_WINDOWEVENT_FOCUS_LOST:
-					printf("WindowEvent Focus Lost");
+					printf("WindowEvent Focus Lost\n");
 					break;
 				default:
 

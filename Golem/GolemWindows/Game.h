@@ -4,6 +4,7 @@
 
 #include "Timer.h"
 #include "Math/Matrix4x4.h"
+#include "Math/Vector2i.h"
 
 namespace Golem::Graphics
 {
@@ -31,7 +32,6 @@ protected:
 	void OnWindowMoved(const Golem::Math::Vector2i& position) override;
 
 private:
-
 	Golem::Graphics::Mesh* m_rabbitMesh;
 	Golem::Graphics::Material* m_rabbitMaterial;
 

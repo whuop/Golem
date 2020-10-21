@@ -1,4 +1,5 @@
 #pragma once
+#include "Mouse.h"
 #include "NonCopyable.h"
 
 //#include "common/entry/input.h"
@@ -38,6 +39,8 @@ namespace Golem
 		virtual void OnWindowMoved(const Golem::Math::Vector2i& position) {}
 		virtual void OnWindowResized(const Golem::Math::Vector2i& size) {}
 
+		Input::Mouse m_mouse;
+		
 		Core::Window* m_window;
 		Core::Renderer* m_renderer;
 
