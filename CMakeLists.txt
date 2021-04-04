@@ -7,9 +7,10 @@ find_package(bgfx REQUIRED CONFIG)
 find_package(imgui REQUIRED CONFIG)
 
 add_executable(${PROJECT_NAME})
+file(GLOB CPP_FILES src/*.cpp)
 target_sources(
     ${PROJECT_NAME} PRIVATE
-    main.cpp
+    ${CPP_FILES}
     sdl-imgui/imgui_impl_sdl.cpp
     bgfx-imgui/imgui_impl_bgfx.cpp
 )
